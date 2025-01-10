@@ -1,0 +1,8 @@
+require("keymaps")
+require("options")
+require("plugins.lazy")
+require("plugins.keymaps")
+require("plugins.options")
+require("plugins.lualine")
+require("plugins.harpoon")
+require("plugins.obsidian")
