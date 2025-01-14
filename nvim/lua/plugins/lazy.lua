@@ -91,14 +91,14 @@ require("lazy").setup({
 
 	-- If this isn't working then run:
 	-- :lua vim.fn["mkdp#util#install"]()
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
+	-- {
+	-- 	"iamcco/markdown-preview.nvim",
+	-- 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+	-- 	ft = { "markdown" },
+	-- 	build = function()
+	-- 		vim.fn["mkdp#util#install"]()
+	-- 	end,
+	-- },
 
 	{
 		"ThePrimeagen/harpoon",
@@ -180,7 +180,6 @@ require("lazy").setup({
 		},
 	},
 
-
 	-- Autocompletion
 	{
 		"hrsh7th/nvim-cmp",
@@ -244,10 +243,13 @@ require("lazy").setup({
 
 			-- Set up lspconfig.
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-			require("lspconfig")["lsp-zero"].setup({
-				capabilities = capabilities,
-			})
+			-- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+			-- require("lspconfig")["lsp-zero"].setup({
+			-- 	capabilities = capabilities,
+			-- })
+			local lsp = require("lsp-zero")
+			lsp.preset("recommended")
+			lsp.setup()
 		end,
 	},
 
@@ -278,10 +280,10 @@ require("lazy").setup({
 					"pyright", -- python
 					"tflint", -- terraform
 					"terraformls",
-                    "bashls",
-                    "html",
-                    "css_variables",
-                    "ts_ls" -- javascript
+					"bashls",
+					"html",
+					"css_variables",
+					"ts_ls", -- javascript
 				},
 				handlers = {
 					-- this first function is the "default handler"
@@ -306,7 +308,7 @@ require("lazy").setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 				before_init = function(_, config)
-					default_venv_path = path.join(vim.env.HOME, "Git", "dummy-repo", "venv", "bin", "python")
+					default_venv_path = path.join(vim.env.HOME, "Git", "tax-returns", "venv", "bin", "python")
 					config.settings.python.pythonPath = default_venv_path
 				end,
 			})
@@ -317,6 +319,9 @@ require("lazy").setup({
 		end,
 	},
 })
+-- /Users/alessandrogarcia/Documents/obsidian/docs/scripts/python
+-- path.join(vim.env.HOME, "Git", "amperon", "venv", "bin", "python")
+-- Git/amperon-rough/venv
 
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
